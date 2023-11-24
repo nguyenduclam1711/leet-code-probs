@@ -1,78 +1,54 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type object struct {
-	min int
-	max int
+func findMin(x int, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func findMax(x int, y int) int {
+	if x > y {
+		return x
+	}
+	return y
 }
 
 func maxProduct(nums []int) int {
+	result := 0
+	min := 0
 	max := 0
-	prefixArr := make([]object, len(nums))
 
 	for i, num := range nums {
 		if num == 0 {
-			if num > max {
-				max = num
+			if num > result {
+				result = num
 			}
-			prefixArr[i] = object{
-				min: 1,
-				max: 1,
-			}
+			min = 1
+			max = 1
 			continue
 		}
 		if i == 0 {
+			min = num
 			max = num
-			prefixArr[i] = object{
-				min: num,
-				max: num,
-			}
+			result = num
 			continue
 		}
-		x := prefixArr[i-1].max * num
-		y := prefixArr[i-1].min * num
+		x := min * num
+		y := max * num
 
-		if x > y {
-			if num > x {
-				prefixArr[i] = object{
-					min: y,
-					max: num,
-				}
-			} else if y < num {
-				prefixArr[i] = object{
-					min: y,
-					max: x,
-				}
-			} else {
-				prefixArr[i] = object{
-					min: num,
-					max: x,
-				}
-			}
-		} else {
-			if num > y {
-				prefixArr[i] = object{
-					min: x,
-					max: num,
-				}
-			} else if x < num {
-				prefixArr[i] = object{
-					min: x,
-					max: y,
-				}
-			} else {
-				prefixArr[i] = object{
-					min: num,
-					max: y,
-				}
-			}
-		}
-		if prefixArr[i].max > max {
-			max = prefixArr[i].max
+		min = findMin(findMin(x, y), num)
+		max = findMax(findMax(x, y), num)
+
+		if max > result {
+			result = max
 		}
 	}
-	return max
+	return result
 }
 
 func main() {
