@@ -1,0 +1,3 @@
+module leetcodeprobs/findfirstandlastpositionofelementinsortedarray
+
+go 1.20
