@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
+var containsDuplicate = function (nums) {
   const storeObj = {};
   let i = 0;
 
@@ -12,10 +12,10 @@ var containsDuplicate = function(nums) {
       return true;
     }
     storeObj[num] = true;
-    i++
+    i++;
   }
   return false;
 };
 
-console.log("Input: nums = [1,2,3,1]")
-console.log("Output:", containsDuplicate([1,2,3,1]))
+console.log("Input: nums = [1,2,3,1]");
+console.log("Output:", containsDuplicate([1, 2, 3, 1]));
