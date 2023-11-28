@@ -1,21 +1,16 @@
-var hammingWeight = function (n) {
-  let w = 0;
-  while (n !== 0) {
-    if (n & (1 == 1)) {
-      w++;
+var countBits = function(n) {
+  const len = n + 1;
+  const res = Array(len);
+  let offset = 1;
+  res[0] = 0;
+
+  for (let i = 1; i < len; i++) {
+    if (offset * 2 === i) {
+      offset = i;
     }
-    n = n >> 1;
-  }
-  return w;
-};
-
-var countBits = function (n) {
-  const res = Array(n + 1);
-
-  for (let i = 0; i < n + 1; i++) {
-    res[i] = hammingWeight(i);
+    res[i] = 1 + res[i - offset];
   }
   return res;
 };
 
-console.log(countBits(10));
+console.log(countBits(31));
