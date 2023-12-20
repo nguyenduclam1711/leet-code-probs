@@ -1,8 +1,6 @@
-package main
+package pascalstriangle
 
-import "fmt"
-
-func generate(numRows int) [][]int {
+func Generate(numRows int) [][]int {
 	result := [][]int{}
 	for i := 1; i <= numRows; i++ {
 		if i == 1 {
@@ -27,8 +25,4 @@ func generate(numRows int) [][]int {
 		result = append(result, row)
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(generate(3))
 }

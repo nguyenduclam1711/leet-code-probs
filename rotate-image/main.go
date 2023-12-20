@@ -1,4 +1,4 @@
-package main
+package rotateimage
 
 import "fmt"
 
@@ -27,7 +27,7 @@ func getMapKey(x int, y int) string {
 	return fmt.Sprint(x, ",", y)
 }
 
-func rotate(matrix [][]int) {
+func Rotate(matrix [][]int) {
 	matrixLen := len(matrix)
 	loop := 0
 	m := map[string]int{}
@@ -69,20 +69,4 @@ func rotate(matrix [][]int) {
 		matrixLen -= 2
 		loop++
 	}
-}
-
-func main() {
-	matrix := [][]int{
-		{1, 2, 3},
-		{4, 5, 6},
-		{7, 8, 9},
-	}
-	// matrix := [][]int{
-	// 	{5, 1, 9, 11},
-	// 	{2, 4, 8, 10},
-	// 	{13, 3, 6, 7},
-	// 	{15, 14, 12, 16},
-	// }
-	rotate(matrix)
-	fmt.Println(matrix)
 }

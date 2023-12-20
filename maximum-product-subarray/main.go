@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package maximumproductsubarray
 
 func findMin(x int, y int) int {
 	if x < y {
@@ -18,7 +14,7 @@ func findMax(x int, y int) int {
 	return y
 }
 
-func maxProduct(nums []int) int {
+func MaxProduct(nums []int) int {
 	result := 0
 	min := 0
 	max := 0
@@ -49,8 +45,4 @@ func maxProduct(nums []int) int {
 		}
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(maxProduct([]int{2, -5, -2, -4, 3}))
 }

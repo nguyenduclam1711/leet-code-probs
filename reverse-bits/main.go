@@ -1,11 +1,10 @@
-package main
+package reversebits
 
 import (
-	"fmt"
 	"math"
 )
 
-func reverseBits(num uint32) uint32 {
+func ReverseBits(num uint32) uint32 {
 	var result uint32 = 0
 	pos := 31
 
@@ -15,8 +14,4 @@ func reverseBits(num uint32) uint32 {
 		pos--
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(reverseBits(43261596))
 }

@@ -1,4 +1,4 @@
-package main
+package reverseinteger
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func reverse(x int) int {
+func Reverse(x int) int {
 	max := int(math.Pow(2, 31))
 	isLessThanZero := x < 0
 	if isLessThanZero {
@@ -27,8 +27,4 @@ func reverse(x int) int {
 		return -res
 	}
 	return res
-}
-
-func main() {
-	fmt.Println(reverse(-123))
 }

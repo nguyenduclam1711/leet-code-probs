@@ -1,10 +1,6 @@
-package main
+package sumoftwointegers
 
-import (
-	"fmt"
-)
-
-func getSum(a int, b int) int {
+func GetSum(a int, b int) int {
 	res := a ^ b
 	carry := (a & b) << 1
 	for carry != 0 {
@@ -13,8 +9,4 @@ func getSum(a int, b int) int {
 		carry = (tmp & carry) << 1
 	}
 	return res
-}
-
-func main() {
-	fmt.Println(getSum(1, 100))
 }

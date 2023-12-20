@@ -1,9 +1,7 @@
-package main
-
-import "fmt"
+package climbingstairs
 
 // this is simply just calculate fibonacci at n position
-func climbStairs(n int) int {
+func ClimbStairs(n int) int {
 	a := 0
 	b := 1
 
@@ -13,8 +11,4 @@ func climbStairs(n int) int {
 		b += tmp
 	}
 	return b
-}
-
-func main() {
-	fmt.Println(climbStairs(10))
 }

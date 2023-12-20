@@ -1,8 +1,6 @@
-package main
+package countingbits
 
-import "fmt"
-
-func countBits(n int) []int {
+func CountBits(n int) []int {
 	len := n + 1
 	res := make([]int, len)
 	offset := 1
@@ -14,8 +12,4 @@ func countBits(n int) []int {
 		res[i] = 1 + res[i-offset]
 	}
 	return res
-}
-
-func main() {
-	fmt.Println(countBits(31))
 }

@@ -1,8 +1,6 @@
-package main
+package intersectionoftwoarrays
 
-import "fmt"
-
-func intersection(nums1 []int, nums2 []int) []int {
+func Intersection(nums1 []int, nums2 []int) []int {
 	result := []int{}
 	uniqNums := map[int]bool{}
 
@@ -18,8 +16,4 @@ func intersection(nums1 []int, nums2 []int) []int {
 		}
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(intersection([]int{1, 2, 2, 1}, []int{2, 2}))
 }

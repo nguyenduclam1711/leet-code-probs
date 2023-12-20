@@ -1,8 +1,6 @@
-package main
+package singlenumber
 
-import "fmt"
-
-func singleNumber(nums []int) int {
+func SingleNumber(nums []int) int {
 	m := map[int]bool{}
 
 	for _, num := range nums {
@@ -16,8 +14,4 @@ func singleNumber(nums []int) int {
 		return key
 	}
 	return 0
-}
-
-func main() {
-	fmt.Println([]int{4, 1, 2, 1, 2})
 }

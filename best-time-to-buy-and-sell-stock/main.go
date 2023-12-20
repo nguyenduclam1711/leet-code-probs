@@ -1,10 +1,8 @@
-package main
+package besttimetobuyandsellstock
 
-import "fmt"
-
-func maxProfit(prices []int) int {
-	var profit, currentProfit = 0, 0
-	var buyDay = 0
+func MaxProfit(prices []int) int {
+	profit, currentProfit := 0, 0
+	buyDay := 0
 
 	for i := 1; i < len(prices); i++ {
 		currentProfit = prices[i] - prices[buyDay]
@@ -15,9 +13,4 @@ func maxProfit(prices []int) int {
 		}
 	}
 	return profit
-}
-
-func main() {
-	fmt.Println("Input: prices = [7,1,5,3,6,4]")
-	fmt.Println("Output", maxProfit([]int{7, 1, 5, 3, 6, 4}))
 }

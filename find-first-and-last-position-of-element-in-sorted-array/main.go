@@ -1,8 +1,6 @@
-package main
+package findfirstandlastpositionofelementinsortedarray
 
-import "fmt"
-
-func searchRange(nums []int, target int) []int {
+func SearchRange(nums []int, target int) []int {
 	result := []int{-1, -1}
 	l, r, p := 0, len(nums), (0+len(nums))/2
 
@@ -38,8 +36,4 @@ func searchRange(nums []int, target int) []int {
 		p = (l + r) / 2
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(searchRange([]int{5, 7, 7, 8, 8, 10}, 8))
 }

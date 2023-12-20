@@ -1,8 +1,6 @@
-package main
+package removeduplicatesfromsortedarray
 
-import "fmt"
-
-func removeDuplicates(nums []int) int {
+func RemoveDuplicates(nums []int) int {
 	count := 1
 	prevNum := nums[0]
 
@@ -14,8 +12,4 @@ func removeDuplicates(nums []int) int {
 		}
 	}
 	return count
-}
-
-func main() {
-	fmt.Println(removeDuplicates([]int{2, 3, 2, 3}))
 }

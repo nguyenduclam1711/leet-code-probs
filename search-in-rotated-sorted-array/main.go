@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package searchinrotatedsortedarray
 
 func findMinIndex(nums []int) int {
 	l, r := 0, len(nums)-1
@@ -18,7 +16,7 @@ func findMinIndex(nums []int) int {
 	return l
 }
 
-func search(nums []int, target int) int {
+func Search(nums []int, target int) int {
 	minIndex := findMinIndex(nums)
 	l := 0
 	r := len(nums) - 1
@@ -43,8 +41,4 @@ func search(nums []int, target int) int {
 		return l
 	}
 	return -1
-}
-
-func main() {
-	fmt.Println(search([]int{1, 3}, 3))
 }

@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package containerwithmostwater
 
 func findGreater(x int, y int) int {
 	if x > y {
@@ -9,7 +7,7 @@ func findGreater(x int, y int) int {
 	return y
 }
 
-func maxArea(height []int) int {
+func MaxArea(height []int) int {
 	area := 0
 	l, r := 0, len(height)-1
 
@@ -24,8 +22,4 @@ func maxArea(height []int) int {
 		}
 	}
 	return area
-}
-
-func main() {
-	fmt.Println(maxArea([]int{1, 2, 1}))
 }

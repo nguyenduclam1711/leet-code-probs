@@ -1,11 +1,10 @@
-package main
+package threesum
 
 import (
-	"fmt"
 	"sort"
 )
 
-func threeSum(nums []int) [][]int {
+func ThreeSum(nums []int) [][]int {
 	sort.Ints(nums)
 	var result [][]int
 	var prevA int
@@ -38,8 +37,4 @@ func threeSum(nums []int) [][]int {
 		prevA = num
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(threeSum([]int{3, 0, -2, -1, 1, 2}))
 }

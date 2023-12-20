@@ -1,8 +1,6 @@
-package main
+package maximumsubarray
 
-import "fmt"
-
-func maxSubArray(nums []int) int {
+func MaxSubArray(nums []int) int {
 	prefix := make([]int, len(nums))
 	max := 0
 
@@ -23,8 +21,4 @@ func maxSubArray(nums []int) int {
 		}
 	}
 	return max
-}
-
-func main() {
-	fmt.Println(maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}))
 }

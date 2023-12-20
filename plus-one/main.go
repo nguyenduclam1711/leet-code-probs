@@ -1,8 +1,6 @@
-package main
+package plusone
 
-import "fmt"
-
-func plusOne(digits []int) []int {
+func PlusOne(digits []int) []int {
 	needToPlus := true
 	for i := len(digits) - 1; i >= 0; i-- {
 		if needToPlus {
@@ -19,9 +17,4 @@ func plusOne(digits []int) []int {
 		return append([]int{1}, digits...)
 	}
 	return digits
-}
-
-func main() {
-	fmt.Println(plusOne([]int{1, 2, 3}))
-	fmt.Println(plusOne([]int{9}))
 }

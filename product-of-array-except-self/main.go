@@ -1,8 +1,6 @@
-package main
+package productofarrayexceptself
 
-import "fmt"
-
-func productExceptSelf(nums []int) []int {
+func ProductExceptSelf(nums []int) []int {
 	numsLen := len(nums)
 	productPrefix := make([]int, numsLen)
 	productPostfix := make([]int, numsLen)
@@ -27,7 +25,6 @@ func productExceptSelf(nums []int) []int {
 			}
 		case j == numsLen-1:
 			{
-
 				result[j] = productPrefix[j-1]
 			}
 		default:
@@ -37,8 +34,4 @@ func productExceptSelf(nums []int) []int {
 		}
 	}
 	return result
-}
-
-func main() {
-	fmt.Println(productExceptSelf([]int{1, 2, 3, 4}))
 }

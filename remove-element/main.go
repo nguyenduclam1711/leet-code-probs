@@ -1,8 +1,6 @@
-package main
+package removeelement
 
-import "fmt"
-
-func removeElement(nums []int, val int) int {
+func RemoveElement(nums []int, val int) int {
 	count := 0
 
 	for _, num := range nums {
@@ -12,8 +10,4 @@ func removeElement(nums []int, val int) int {
 		}
 	}
 	return count
-}
-
-func main() {
-	fmt.Println(removeElement([]int{3, 2, 2, 3}, 3))
 }
