@@ -15,7 +15,7 @@ func walk(node *TreeNode, min int, max int) bool {
 	if node.Val >= max || node.Val <= min {
 		return false
 	}
-	return walk(node.Right, node.Val, max) && walk(node.Left, min, node.Val)
+	return walk(node.Left, min, node.Val) && walk(node.Right, node.Val, max)
 }
 
 /**

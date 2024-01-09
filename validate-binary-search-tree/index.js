@@ -5,7 +5,7 @@ function walk(node, min, max) {
   if (node.val >= max || node.val <= min) {
     return false;
   }
-  return walk(node.right, node.val, max) && walk(node.left, min, node.val);
+  return walk(node.left, min, node.val) && walk(node.right, node.val, max);
 }
 
 /**
