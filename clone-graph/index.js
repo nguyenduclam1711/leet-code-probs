@@ -11,9 +11,7 @@
  * @return {Node}
  */
 var cloneGraph = function(node) {
-  // The length of the slice below is 101 because the maximum number of nodes in the graph is 100 (mentioned in the constraints)
-  // And the node's index is 1-indexed so the length is 101, not 100
-  const store = Array(101).fill(null);
+  const store = {};
   const queue = [node];
   const visited = {};
 

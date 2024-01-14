@@ -9,9 +9,7 @@ func CloneGraph(node *Node) *Node {
 	if node == nil {
 		return nil
 	}
-	// The length of the slice below is 101 because the maximum number of nodes in the graph is 100 (mentioned in the constraints)
-	// And the node's index is 1-indexed so the length is 101, not 100
-	s := make([]*Node, 101)
+	s := map[int]*Node{}
 	queue := []*Node{node}
 	visited := map[int]bool{}
 
