@@ -16,13 +16,13 @@ class WordDictionary {
     for (const s of word) {
       const idx = s.charCodeAt(0) - "a".charCodeAt(0);
 
-      if (!curr[idx]) {
-        curr[idx] = {
+      if (!curr.data[idx]) {
+        curr.data[idx] = {
           data: Array(26).fill(null),
           isWord: false,
         };
       }
-      curr = curr[idx];
+      curr = curr.data[idx];
     }
     curr.isWord = true;
   }
@@ -44,20 +44,22 @@ class WordDictionary {
     }
 
     const firstS = word[0];
-    const nodeIdx = firstS.charCodeAt(0) - "a".charCodeAt(0);
-
-    for (let i = 0; i < node.data.length; i++) {
-      const n = node[i];
-
-      if (!n) {
-        continue;
-      }
-      if (firstS === "." || nodeIdx === i) {
+    if (firstS === ".") {
+      for (const n of node.data) {
+        if (!n) {
+          continue;
+        }
         if (this.dfs(n, word.slice(1))) {
           return true;
         }
       }
     }
+
+    const nodeIdx = firstS.charCodeAt(0) - "a".charCodeAt(0);
+    if (node.data[nodeIdx]) {
+      return this.dfs(node.data[nodeIdx], word.slice(1));
+    }
+
     return false;
   }
 

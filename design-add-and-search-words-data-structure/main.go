@@ -45,18 +45,23 @@ func dfs(node *TrieNode, word string) bool {
 	}
 
 	firstR := word[0]
-	nodeIdx := firstR - 'a'
-
-	for i, n := range node.data {
-		if n == nil {
-			continue
-		}
-		if firstR == '.' || nodeIdx == byte(i) {
+	if firstR == '.' {
+		for _, n := range node.data {
+			if n == nil {
+				continue
+			}
 			if dfs(n, word[1:]) {
 				return true
 			}
 		}
+		return false
 	}
+
+	nodeIdx := firstR - 'a'
+	if node.data[nodeIdx] != nil {
+		return dfs(node.data[nodeIdx], word[1:])
+	}
+
 	return false
 }
 
