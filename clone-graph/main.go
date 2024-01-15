@@ -5,7 +5,7 @@ type Node struct {
 	Neighbors []*Node
 }
 
-func CloneGraph(node *Node) *Node {
+func CloneGraphWithBFS(node *Node) *Node {
 	if node == nil {
 		return nil
 	}
@@ -34,5 +34,31 @@ func CloneGraph(node *Node) *Node {
 		}
 		queue = queue[1:]
 	}
+	return s[1]
+}
+
+func dfs(node *Node, s map[int]*Node, visited map[int]bool) {
+	if visited[node.Val] {
+		return
+	}
+	visited[node.Val] = true
+	if s[node.Val] == nil {
+		s[node.Val] = &Node{
+			Val: node.Val,
+		}
+	}
+	for _, n := range node.Neighbors {
+		dfs(n, s, visited)
+		s[node.Val].Neighbors = append(s[node.Val].Neighbors, s[n.Val])
+	}
+}
+
+func CloneGraphByDFS(node *Node) *Node {
+	if node == nil {
+		return nil
+	}
+	s := map[int]*Node{}
+	visited := map[int]bool{}
+	dfs(node, s, visited)
 	return s[1]
 }

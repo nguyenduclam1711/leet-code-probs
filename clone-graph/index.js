@@ -10,7 +10,7 @@
  * @param {Node} node
  * @return {Node}
  */
-var cloneGraph = function(node) {
+var cloneGraphByBFS = function(node) {
   const store = {};
   const queue = [node];
   const visited = {};
@@ -34,5 +34,34 @@ var cloneGraph = function(node) {
     }
     queue.shift();
   }
+  return store[1];
+};
+
+function dfs(node, store, visited) {
+  if (visited[node.val]) {
+    return;
+  }
+  visited[node.val] = true;
+  if (!store[node.val]) {
+    store[node.val] = new Node(node.val);
+  }
+  for (const n of node.neighbors) {
+    dfs(n, store, visited);
+    store[node.val].neighbors.push(store[n.val]);
+  }
+}
+
+/**
+ * @param {Node} node
+ * @return {Node}
+ */
+var cloneGraphByDFS = function(node) {
+  if (!node) {
+    return node;
+  }
+  const store = {};
+  const visited = {};
+
+  dfs(node, store, visited);
   return store[1];
 };
