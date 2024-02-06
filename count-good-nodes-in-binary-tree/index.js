@@ -1,27 +1,24 @@
 /**
  * @param {TreeNode} node
  * @param {Array<number>} maxNums
- * @param {number} prevResult
- * @return {number}
+ * @param {Array<number>} result
+ * @return {void}
  */
-function dfs(node, maxNums, prevResult) {
+function dfs(node, maxNums, result) {
   if (!node) {
-    return prevResult;
+    return result;
   }
-  let result = prevResult;
+  let isAppendToNums = false;
   if (node.val >= maxNums[maxNums.length - 1]) {
-    result++;
+    isAppendToNums = true;
+    result[0]++;
     maxNums.push(node.val);
   }
-  const resultLeft = dfs(node.left, maxNums, result);
-  if (resultLeft > result) {
+  dfs(node.left, maxNums, result);
+  dfs(node.right, maxNums, result);
+  if (isAppendToNums) {
     maxNums.pop();
   }
-  const resultRight = dfs(node.right, maxNums, resultLeft);
-  if (resultRight > resultLeft) {
-    maxNums.pop();
-  }
-  return resultRight;
 }
 
 /**
@@ -38,5 +35,7 @@ function dfs(node, maxNums, prevResult) {
  */
 var goodNodes = function(root) {
   const maxNums = [-Infinity];
-  return dfs(root, maxNums, 0);
+  const result = [0];
+  dfs(root, maxNums, result);
+  return result[0];
 };

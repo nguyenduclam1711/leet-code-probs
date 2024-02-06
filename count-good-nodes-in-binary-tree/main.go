@@ -8,25 +8,21 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func dfs(node *TreeNode, nums *[]int, res *int) bool {
+func dfs(node *TreeNode, nums *[]int, res *int) {
 	if node == nil {
-		return false
+		return
 	}
-	isGreater := false
+	isAppendToNums := false
 	if node.Val >= (*nums)[len(*nums)-1] {
+		isAppendToNums = true
 		*res++
 		*nums = append(*nums, node.Val)
-		isGreater = true
 	}
-	isGreaterLeft := dfs(node.Left, nums, res)
-	if isGreaterLeft {
+	dfs(node.Left, nums, res)
+	dfs(node.Right, nums, res)
+	if isAppendToNums {
 		*nums = (*nums)[:len(*nums)-1]
 	}
-	isGreaterRight := dfs(node.Right, nums, res)
-	if isGreaterRight {
-		*nums = (*nums)[:len(*nums)-1]
-	}
-	return isGreater
 }
 
 func GoodNodes(root *TreeNode) int {
