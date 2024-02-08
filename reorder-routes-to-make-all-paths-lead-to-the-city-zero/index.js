@@ -32,16 +32,15 @@ function addToMapConnections(city, mapConnections, connection) {
  * @return {number}
  */
 var minReorder = function(n, connections) {
-  const mapConnections = {};
+  const mapConnections = Array(n);
   for (let i = 0; i < connections.length; i++) {
     const connection = connections[i];
     addToMapConnections(connection[0], mapConnections, connection);
     addToMapConnections(connection[1], mapConnections, connection);
   }
 
-  const cityCanLeadToZero = {
-    0: true,
-  };
+  const cityCanLeadToZero = Array(n).fill(false);
+  cityCanLeadToZero[0] = true;
   const visited = {};
   const result = [0]; // act like pointer because js doesnt have one
   for (let i = 0; i < n; i++) {

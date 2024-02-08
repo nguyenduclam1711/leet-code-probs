@@ -1,6 +1,6 @@
 package reorderroutestomakeallpathsleadtothecityzero
 
-func dfs(curr int, cityCanLeadToZero map[int]bool, mapConnections map[int][][]int, visited map[int]bool, res *int) {
+func dfs(curr int, cityCanLeadToZero []bool, mapConnections [][][]int, visited map[int]bool, res *int) {
 	if visited[curr] {
 		return
 	}
@@ -20,16 +20,15 @@ func dfs(curr int, cityCanLeadToZero map[int]bool, mapConnections map[int][][]in
 }
 
 func minReorder(n int, connections [][]int) int {
-	mapConnections := map[int][][]int{}
+	mapConnections := make([][][]int, n)
 	for _, connection := range connections {
 		firstCity, secondCity := connection[0], connection[1]
 		mapConnections[firstCity] = append(mapConnections[firstCity], connection)
 		mapConnections[secondCity] = append(mapConnections[secondCity], connection)
 	}
 
-	cityCanLeadToZero := map[int]bool{
-		0: true,
-	}
+	cityCanLeadToZero := make([]bool, n)
+	cityCanLeadToZero[0] = true
 	res := 0
 	visited := map[int]bool{}
 	for i := 0; i < n; i++ {
