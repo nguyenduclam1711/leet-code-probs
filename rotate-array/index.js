@@ -13,3 +13,24 @@ var rotate = function (nums, k) {
     nums[i] = newArr[i];
   }
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate2 = function (nums, k) {
+  const reverse = (start, end) => {
+    while (start < end) {
+      const tmp = nums[end];
+      nums[end] = nums[start];
+      nums[start] = tmp;
+      start++;
+      end--;
+    }
+  };
+  const j = k % nums.length;
+  reverse(0, nums.length - 1);
+  reverse(0, j - 1);
+  reverse(j, nums.length - 1);
+};
