@@ -22,4 +22,9 @@ func TestTwoSum(t *testing.T) {
 		fmt.Println("test3", test3)
 		t.FailNow()
 	}
+	test4 := twoSum([]int{5, 25, 75}, 100)
+	if !reflect.DeepEqual([]int{2, 3}, test4) {
+		fmt.Println("test4", test4)
+		t.FailNow()
+	}
 }
