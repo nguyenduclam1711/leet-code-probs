@@ -1,16 +1,5 @@
 package minimumwindowsubstring
 
-func checkValid(mapCountT map[byte]int, currCount map[byte]int, leftChars map[byte]bool) bool {
-	res := true
-	for char := range leftChars {
-		if mapCountT[char] > currCount[char] {
-			res = false
-			break
-		}
-	}
-	return res
-}
-
 func minWindow(s string, t string) string {
 	if len(s) < len(t) {
 		return ""
@@ -28,7 +17,7 @@ func minWindow(s string, t string) string {
 	l, r := 0, 0
 	currCount := map[byte]int{}
 	for l < len(s) && r <= len(s) {
-		isValid := checkValid(mapCountT, currCount, leftChars)
+		isValid := len(leftChars) == 0
 		if !isValid {
 			if r < len(s) {
 				currCount[s[r]]++
@@ -42,10 +31,10 @@ func minWindow(s string, t string) string {
 			if len(newRes) < len(res) {
 				res = newRes
 			}
-			if _, e := mapCountT[s[l]]; e {
+			currCount[s[l]]--
+			if mapCountT[s[l]] > 0 && currCount[s[l]] < mapCountT[s[l]] {
 				leftChars[s[l]] = true
 			}
-			currCount[s[l]]--
 			l++
 		}
 	}
