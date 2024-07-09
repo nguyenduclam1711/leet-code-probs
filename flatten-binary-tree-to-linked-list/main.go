@@ -10,11 +10,7 @@ func flatten(root *TreeNode) {
 	if root == nil {
 		return
 	}
-	head := &TreeNode{
-		Val: root.Val,
-	}
-	currLinkedListNode := head
-
+	var head, currLinkedListNode *TreeNode
 	var recurseFunc func(currNode *TreeNode)
 
 	recurseFunc = func(currNode *TreeNode) {
@@ -24,14 +20,16 @@ func flatten(root *TreeNode) {
 		newNode := &TreeNode{
 			Val: currNode.Val,
 		}
-		currLinkedListNode.Right = newNode
+		if currLinkedListNode == nil {
+			head = newNode
+		} else {
+			currLinkedListNode.Right = newNode
+		}
 		currLinkedListNode = newNode
 		recurseFunc(currNode.Left)
 		recurseFunc(currNode.Right)
 	}
-
-	recurseFunc(root.Left)
-	recurseFunc(root.Right)
+	recurseFunc(root)
 	root.Right = head.Right
 	root.Left = nil
 }
