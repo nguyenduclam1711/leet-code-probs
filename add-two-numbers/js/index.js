@@ -10,10 +10,11 @@ class ListNode {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
-  p1 = l1;
-  p2 = l2;
-  l = new LinkedList();
+var addTwoNumbers = function (l1, l2) {
+  let p1 = l1;
+  let p2 = l2;
+  let head = null;
+  let l = head;
   let needToAdded = 0;
 
   while (p1 || p2) {
@@ -39,26 +40,17 @@ var addTwoNumbers = function(l1, l2) {
       newVal = newVal % 10;
       needToAdded = 1;
     }
-    l.insert(newVal);
+
+    if (!head) {
+      head = new ListNode(newVal);
+      l = head;
+    } else {
+      l.next = new ListNode(newVal);
+      l = l.next;
+    }
   }
   if (needToAdded === 1) {
-    l.insert(1);
+    l.next = new ListNode(1);
   }
-  return l.head;
+  return head;
 };
-
-class LinkedList {
-  constructor() {
-    this.head = this.tail = undefined;
-  }
-
-  insert(val) {
-    const newNode = new ListNode(val);
-    if (!this.head) {
-      this.head = this.tail = newNode;
-      return;
-    }
-    this.tail.next = newNode;
-    this.tail = newNode;
-  }
-}

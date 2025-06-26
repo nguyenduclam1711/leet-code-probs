@@ -5,10 +5,11 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	p1 := l1
 	p2 := l2
-	l := LinkedList{}
+	var head *ListNode = nil
+	l := head
 	needToAdded := 0
 
 	for p1 != nil || p2 != nil {
@@ -34,28 +35,25 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			newVal = newVal % 10
 			needToAdded = 1
 		}
-		l.insert(newVal)
+		if head == nil {
+			head = &ListNode{
+				Val: newVal,
+			}
+			l = head
+		} else {
+			l.Next = &ListNode{
+				Val:  newVal,
+				Next: nil,
+			}
+			l = l.Next
+		}
 	}
 	if needToAdded == 1 {
-		l.insert(1)
+		next := &ListNode{
+			Val:  needToAdded,
+			Next: nil,
+		}
+		l.Next = next
 	}
-	return l.head
-}
-
-type LinkedList struct {
-	head *ListNode
-	tail *ListNode
-}
-
-func (l *LinkedList) insert(value int) {
-	newNode := &ListNode{
-		Val: value,
-	}
-	if l.head == nil {
-		l.head = newNode
-		l.tail = newNode
-		return
-	}
-	l.tail.Next = newNode
-	l.tail = newNode
+	return head
 }
