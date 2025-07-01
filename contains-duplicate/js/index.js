@@ -3,16 +3,12 @@
  * @return {boolean}
  */
 var containsDuplicate = function (nums) {
-  const storeObj = {};
-  let i = 0;
-
-  while (i < nums.length) {
-    const num = nums[i];
-    if (storeObj[num]) {
+  const s = new Set();
+  for (const n of nums) {
+    if (s.has(n)) {
       return true;
     }
-    storeObj[num] = true;
-    i++;
+    s.add(n);
   }
   return false;
 };
